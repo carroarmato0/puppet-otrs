@@ -1,0 +1,34 @@
+{
+  "name": "chvlanck-otrs",
+  "version": "0.1.0",
+  "author": "chvlanck",
+  "summary": "Module for installing and managing an OTRS installation",
+  "license": "Apache-2.0",
+  "source": "https://github.com/carroarmato0/puppet-otrs",
+  "project_page": "https://github.com/carroarmato0/puppet-otrs",
+  "issues_url": "https://github.com/carroarmato0/puppet-otrs/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    }
+  ]
+}
