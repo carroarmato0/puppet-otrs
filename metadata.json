@@ -1,7 +1,7 @@
 {
-  "name": "chvlanck-otrs",
+  "name": "carroarmato0-otrs",
   "version": "0.1.0",
-  "author": "chvlanck",
+  "author": "carroarmato0",
   "summary": "Module for installing and managing an OTRS installation",
   "license": "Apache-2.0",
   "source": "https://github.com/carroarmato0/puppet-otrs",
