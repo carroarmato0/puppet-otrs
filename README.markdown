@@ -13,35 +13,83 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves. This is your 30 second elevator pitch for your module. Consider including OS/Puppet version it works with.       
+This module allows you to install and manage an OTRS installation starting from OTRS 5.
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology the module integrates with and what that integration enables. This section should answer the questions: "What does this module *do*?" and "Why would I use it?"
+The module allows different kinds of installations.
 
-If your module has a range of functionality (installation, configuration, management, etc.) this is the time to mention it.
+Currently:
+* web
+* package
 
 ## Setup
 
 ### What otrs affects
 
-* A list of files, packages, services, or operations that the module will alter, impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form. 
+OTRS expects the installation to be performed in **/opt/otrs**
+
+Be sure to make a backup **BEFORE** applying changes.
+
+The module allows to selectively manage certain things like:
+
+* The otrs user
+* Apache
+* MySQL
+
+Those will be managed out of convenience, but you can choose to manage those yourself.
 
 ### Setup Requirements **OPTIONAL**
 
-If your module requires anything extra before setting up (pluginsync enabled, etc.), mention it here. 
+Depending on which components you want to use, the optional modules are:
+
+* Apache https://github.com/puppetlabs/puppetlabs-apache.git
+* MySQL https://github.com/puppetlabs/puppetlabs-mysql.git
 
 ### Beginning with otrs
 
-The very basic steps needed for a user to get the module up and running. 
+Simple setup
 
-If your most recent release breaks compatibility or requires particular steps for upgrading, you may wish to include an additional section here: Upgrading (For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+```
+include ::otrs
+```
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing the fancy stuff with your module here. 
+Web installation using Mysql as a connector
+
+```
+class {'otrs':
+  installation_type  => 'web',
+  database_connector => 'mysql',
+}
+```
+
+Connecting to a remove Mysql Server
+
+```
+class {'otrs':
+  database_connector => 'mysql',
+  db_host            => 'db.example.com',
+  db_name            => 'otrsprod',
+  db_user            => 'otrs',
+  db_password        => 'plzCr3at3Atick3t',
+}
+```
+Customize options
+
+```
+class {'otrs':
+  config_hash        => {
+    'SystemID'         => '66',
+    'FQDN'             => $::fqdn,
+    'CustomerHeadline' => 'Frequently asked questions',
+    'DefaultLanguage'  => 'en',
+    'SecureMode'       => '1',
+  }
+}
+```
+
 
 ## Reference
 
@@ -49,12 +97,5 @@ Here, list the classes, types, providers, facts, etc contained in your module. T
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
-
-## Development
-
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You may also add any additional sections you feel are necessary or important to include here. Please use the `## ` header. 
+* Currently tested on Debian Jessie
+* Only web installation tested

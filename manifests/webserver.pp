@@ -4,12 +4,14 @@
 #
 class otrs::webserver {
 
+  # Deploy Apache running as the OTRS user
   class { '::apache':
     user          => $::otrs::params::user,
     manage_user   => false,
     default_vhost => false,
   }
 
+  # Load the Apache Perl module
   include ::apache::mod::perl
 
   ::apache::vhost { 'otrs':
