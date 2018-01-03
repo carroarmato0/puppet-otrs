@@ -24,6 +24,7 @@ class otrs (
   String                    $db_password        = $::otrs::params::db_password,
   Boolean                   $manage_database    = $::otrs::params::manage_database,
   Hash[String,String]       $config_hash        = {},
+  String                    $config_block       = '',
 ) inherits ::otrs::params {
 
   class { '::otrs::install': } ->
