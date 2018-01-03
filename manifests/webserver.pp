@@ -13,6 +13,8 @@ class otrs::webserver {
 
   # Load the Apache Perl module
   include ::apache::mod::perl
+  # Load the Apache headers module to improve UI speed
+  include ::apache::mod::headers
 
   ::apache::vhost { 'otrs':
     port          => '80',
