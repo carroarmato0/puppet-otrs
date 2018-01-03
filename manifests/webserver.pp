@@ -9,6 +9,7 @@ class otrs::webserver {
     user          => $::otrs::params::user,
     manage_user   => false,
     default_vhost => false,
+    mpm_module    => 'prefork', # Use the recommended multi-processing module in Apache
   }
 
   # Load the Apache Perl module
