@@ -34,6 +34,12 @@ class otrs::params {
         'libnet-dns-perl',
         'libtemplate-perl',
         'libyaml-libyaml-perl',
+        'libnet-ldap-perl',
+        'libjson-xs-perl',
+        'libxml-libxslt-perl',
+        'libmail-imapclient-perl',
+        'libencode-hanextra-perl',
+        'libtext-csv-xs-perl',
       ]
 
       $database_connector_mysql = [
