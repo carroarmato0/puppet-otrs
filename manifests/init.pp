@@ -21,6 +21,7 @@ class otrs (
   Enum['mysql','odbc','pg'] $database_connector = $::otrs::params::database_connector,
   String                    $db_host            = $::otrs::params::db_host,
   String                    $db_name            = $::otrs::params::db_name,
+  String                    $db_user            = $::otrs::params::db_user,
   String                    $db_password        = $::otrs::params::db_password,
   Boolean                   $manage_database    = $::otrs::params::manage_database,
   Hash[String,String]       $config_hash        = {},
