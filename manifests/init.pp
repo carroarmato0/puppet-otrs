@@ -28,7 +28,7 @@ class otrs (
   String                    $config_block       = '',
 ) inherits ::otrs::params {
 
-  class { '::otrs::install': } ->
-  class { '::otrs::config': } ~>
-  Class['::otrs']
+  contain ::otrs::install
+  contain ::otrs::config
+
 }
