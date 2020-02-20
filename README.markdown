@@ -65,7 +65,7 @@ class {'otrs':
 }
 ```
 
-Connecting to a remove Mysql Server
+Connecting to a remote Mysql Server
 
 ```
 class {'otrs':
